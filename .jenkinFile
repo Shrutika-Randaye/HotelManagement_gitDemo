@@ -1,21 +1,16 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-        stage('deploy') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-    }
+    tools{
+maven "MAVEN_HOME"
 }
+stage('Build') {
+ steps {
+                // Check out the Git repository
+                git 
+            }
+            steps {
+                // Build the Maven project
+                sh 'mvn clean install'
+            }
+        }

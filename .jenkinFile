@@ -7,10 +7,22 @@ maven "MAVEN_HOME"
 stage('Build') {
  steps {
                 // Check out the Git repository
-                git 
+                git https://github.com/Shrutika-Randaye/HotelManagement_gitDemo.git
             }
             steps {
                 // Build the Maven project
                 sh 'mvn clean install'
             }
         }
+post {
+        success {
+            // This block will run if the pipeline is successful
+            echo 'Pipeline successful!'
+        }
+        failure {
+            // This block will run if the pipeline fails
+            echo 'Pipeline failed!'
+        }
+    }
+}
+

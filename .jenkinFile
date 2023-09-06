@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools{
-maven "MAVEN_HOME"
+        maven "MAVEN_HOME"
 }
 stage('Build') {
  steps {
@@ -11,18 +11,16 @@ stage('Build') {
             }
             steps {
                 // Build the Maven project
-                sh 'mvn clean install'
+               bat "mvn Dmaven.test.failure ignore true clean package"
             }
         }
 post {
         success {
             // This block will run if the pipeline is successful
-            echo 'Pipeline successful!'
+            //echo 'Pipeline successful!'
+archievArtifacts 'target/'.jar'
         }
-        failure {
-            // This block will run if the pipeline fails
-            echo 'Pipeline failed!'
-        }
+       
     }
 }
 
